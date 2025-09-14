@@ -1,31 +1,79 @@
-#[derive(Debug)] // derived macros are imported like this.
-
-struct User {
-    name: String,
-    age: u32,
+// computes an arithmetic expression
+macro_rules! eval {
+    ($expr: expr) => {
+        $expr
+    };
 }
 
-// impl std::fmt::Display for User {
-//     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-//         write!(f, "({}, {})", self.name, self.age)
-//     }
-// }
-
-// impl std::fmt::Debug for User {
-//     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-//         write!(f, "({}, {})", self.name, self.age)
-//     }
-// }
+// macro to create a vector
+macro_rules! vector {
+    ( $( $x:expr ),* ) => {
+        {
+            let mut temp_vec = Vec::new();
+            $(
+                temp_vec.push($x);
+            )*
+            temp_vec
+        }
+    };
+}
 
 fn main() {
-    let u = User {
-        name: String::from("charith"),
-        age: 22,
-    };
+    let ans = eval!(2 + 3 * 5);
+    println!("{}", ans);
 
-    // println!("{}", u);
-    println!("{:?}", u);
+	let ans2 = vector!(1, 2, 3);
+	println!("{}", ans2[0]);
 }
+
+// -----------------------------------------------------------------------------
+
+// #[derive(Debug)] // Debug is a custom derive procedural macro
+// struct User {
+//     name: String,
+//     age: u32
+// }
+
+// fn main() {
+//     println!("hi there"); // declarative macro
+// }
+
+//#[post("/user/")] // attribute like procedural macro
+// fn create_user() {
+//    sqlx::query!("INSERT INTO USERS VALUES ()") // function like procedural macro
+// }
+// -------------------------------------------------------------------------
+
+// #[derive(Debug)] // derived macros are imported like this.
+
+// struct User {
+//     name: String,
+//     age: u32,
+// }
+
+// // impl std::fmt::Display for User {
+// //     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+// //         write!(f, "({}, {})", self.name, self.age)
+// //     }
+// // }
+
+// // impl std::fmt::Debug for User {
+// //     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+// //         write!(f, "({}, {})", self.name, self.age)
+// //     }
+// // }
+
+// fn main() {
+//     let u = User {
+//         name: String::from("charith"),
+//         age: 22,
+//     };
+
+//     // println!("{}", u);
+//     println!("{:?}", u);
+// }
+
+// -------------------------------------------------------------------
 
 // pub trait Shape {
 //     fn shape_name() -> String; // associated static function per type

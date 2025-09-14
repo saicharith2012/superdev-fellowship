@@ -65,3 +65,25 @@ There is no default derived macro for ```Display``` trait unlike the ```Debug```
 > What are Attribute Procedural Macros?
 
 ## Macros
+
+![alt text](image-5.png)
+
+![alt text](image-11.png)
+
+## Types of Macros
+
+Rust provides powerful metaprogramming tools in the form of macros, which allow code generation and transformation at compile time. There are three main categories:
+
+![alt text](image-12.png)
+
+![alt text](image-13.png)
+
+![alt text](image-14.png)
+
+![alt text](image-15.png)
+
+![alt text](image-16.png)
+
+## Declarative Macros
+
+![alt text](image-17.png)
